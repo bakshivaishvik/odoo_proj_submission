@@ -12,6 +12,8 @@
 </div>
 
 ---
+## watch the demo here
+[demo of our project](https://drive.google.com/drive/folders/19fbKq4neyXM9CXgGmetrr6tgEIg8Y28e?usp=sharing)
 
 ## 💥Problem We're Solving - StackIt – AI-Powered Q&A Revolution
 
