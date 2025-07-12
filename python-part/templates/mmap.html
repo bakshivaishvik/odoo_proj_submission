@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Map | Text to Mind Map AI</title>
+    <meta name="description" content="Create infinite Mind Maps using AI. Totally free! Just type in a topic to create mind maps easily. That’s it! You’ll get your mind map instantly. It’s free and no sign-up needed.">
+    <link rel="icon" type="image/png" href="/img/favicon96.png" sizes="96x96">
+    <link rel="stylesheet" href="./static/index.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="text-logo">
+            <a href="/" class="logo-link">
+                <img src="/img/favicon96.png" alt="Logo" class="logo">
+                <h3 class="logo-text">Mind Map</h3>
+                <div class="logo-badge" id="logo-badge"><p>Free</p></div>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a class="navbutton" href="mmap">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="centered-div">
+            <div class="header" id="header">
+                <h1>Generate a Mind Map with AI</h1>
+                <p class="topic-input-cta">Type a topic for your mind map!</p>
+                <div class="input-wrapper">
+                    <input type="text" id="prompt" class="input" placeholder="Enter your mind map topic...">
+                    <button onclick="generateMindmap('mindmapTopic')" class="send-prompt-btn">
+                        <img src="/img/icons/send-icon.png" alt="Generate" height="26px" width="26px" class="send-icon">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="process-section">
+        <h2 class="section-title">How It Works</h2>
+        <div class="process-boxes">
+            <div class="process-box">
+                <img src="/img/p1-enter-topic.webp" alt="Topic Input Box" class="process-img">
+                <div class="process-title">
+                    <span class="process-number">1</span>
+                    <h3>Enter Your Topic</h3>
+                </div>
+                <p>Just type any topic you'd like to explore in the input field.</p>
+            </div>
+            <div class="process-box">
+                <img src="/img/p2-gen-mind-map.webp" alt="AI Generation Bot" class="process-img">
+                <div class="process-title">
+                    <span class="process-number">2</span>
+                    <h3>AI Processing</h3>
+                </div>
+                <p>Our AI will examine your topic and create a comprehensive mind map.</p>
+            </div>
+            <div class="process-box">
+                <img src="/img/p3-edit-mind-map.webp" alt="Mind Map Editing Screenshot" class="process-img">
+                <div class="process-title">
+                    <span class="process-number">3</span>
+                    <h3>Share Your Mind Map</h3>
+                </div>
+                <p>Quickly view, edit, and share your beautifully crafted mind map in just seconds.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.16.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.16.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.16"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8940556207214695" crossorigin="anonymous"></script>
+    <script>
+        function generateMindmap() {
+            console.log("generateMindmap called");
+            const query = document.getElementById('prompt').value;
+            console.log("Query value:", query);
+            if (query) {
+                window.location.href = `new?q=${encodeURIComponent(query)}`;
+            } else {
+                console.log("Query is empty or undefined");
+            }
+        }
+
+        $(document).on('keypress', function(event) {
+            if (event.key === 'Enter') {
+                generateMindmap();
+            }
+        });
+
+        const items = document.querySelectorAll('.accordion button');
+
+        function toggleAccordion() {
+            const itemToggle = this.getAttribute('aria-expanded');
+            for (i = 0; i < items.length; i++) {
+                items[i].setAttribute('aria-expanded', 'false');
+            }
+            if (itemToggle == 'false') {
+                this.setAttribute('aria-expanded', 'true');
+            }
+        }
+        items.forEach((item) => item.addEventListener('click', toggleAccordion));
+
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const logoBadge = document.getElementById('logo-badge');
+            if (window.scrollY > 30) {
+                navbar.classList.add('scrolled');
+                logoBadge.style.display = 'block';
+            } else {
+                navbar.classList.remove('scrolled');
+                logoBadge.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mind Map Wizard - Mind Map Editing</title>
+        <meta
+            name="description"
+            content="Mind Map Wizard: Generate mind maps effortlessly by typing in a topic. Free, no sign-up, no ads.">
+        <meta
+            name="keywords"
+            content="mind map, mind mapping, AI, text to mind map, free mind map generator, no sign up, no ads">
+
+        <meta property="og:title" content="Mind Map Wizard | Text to Mind Map AI">
+        <meta
+            property="og:description"
+            content="Generate mind maps effortlessly by typing in a topic. Free, no sign-up, no ads.">
+        <meta property="og:image" content="/img/meta-img.jpg">
+
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="/img/meta-img.jpg">
+        <meta name="twitter:title" content="Mind Map Wizard | Text to Mind Map AI">
+        <meta
+            name="twitter:description"
+            content="Generate mind maps effortlessly by typing in a topic. Free, no sign-up, no ads.">
+        <meta name="twitter:image" content="/img/meta-img.jpg">
+
+        <link rel="icon" type="image/png" href="/img/favicon16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="/img/favicon32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/img/favicon48.png" sizes="48x48">
+        <link rel="icon" type="image/png" href="/img/favicon64.png" sizes="64x48">
+        <link rel="icon" type="image/png" href="/img/favicon96.png" sizes="96x96">
+        <link rel="apple-touch-icon" href="/img/logo.png">
+        <link href="/OpenSans-ExtraBold.ttf" rel="stylesheet">
+
+        <meta name="theme-color" content="#C667FF">
+        <meta name="language" content="en">
+
+    </script>
+    <link rel="stylesheet" href="./static/mind-map-editing.css">
+       
+</head>
+<body>
+    <div class="popup" id="legalPopup">
+        <div class="popup-content">
+            <div>
+                <h2>🍪 Cookies</h2>
+                <p>To proceed, you need to agree to our
+                    <a href="/terms-of-use.html" style="color: var(--text-color);">Terms of Use</a>
+                    and
+                    <a
+                        href="/privacy-policy.html"
+                        onclick="event.preventDefault();"
+                        style="color: var(--text-color);">Privacy Policy</a>
+                    <br>
+                    <div class="whitespace"></div>
+
+                    <strong>Purposes:</strong>
+                    <ul class="legal-purposes">
+                        <li>Functionality</li>
+                        <li>Analytics</li>
+                    </ul>
+                </p>
+                <div class="whitespace"></div>
+            </div>
+            <button onclick="closePopup()" class="decline-terms-button">Decline</button>
+            <button onclick="acceptDisclaimer()" class="accept-terms-button">Accept and Continue</button>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="header-left">
+            <a href="/" style="text-decoration: none;">
+                <h1><img src="/img/favicon96.png" height="40" width="40" class="logo">
+                    <span class="logo-text">Mind Map Wizard</span></h1>
+            </a>
+        </div>
+
+
+        <a class="navbutton" href="/">New Mind Map</a>
+    </div>
+    <div class="container">
+        <p id="back-button" class="back-button" style="font-size: 20px;">
+            <button
+                onclick="goBack()"
+                style="background: none; border: none; text-decoration: none; color: #1e293b; cursor: pointer; font-size: 1.2rem;">
+                <img src="/img/icons/arrow-back-black.svg" alt="Back" class="back-arrow">
+                Back
+            </button>
+
+        </p>
+        <hr
+            style="border: 3px solid; border-color: var(--primary-color); border-radius: 5px;">
+        <h1>Mind Map Editing Guide</h1>
+        <br>
+        <h2>Table of Contents</h2>
+        <ol class="table-of-contents">
+            <li>
+                <a href="#basic-structure">Basic Structure</a>
+            </li>
+            <li>
+                <a href="#text-formatting">Text Formatting</a>
+            </li>
+            <li>
+                <a href="#ordered-lists">Ordered Lists</a>
+            </li>
+            <li>
+                <a href="#links">Links</a>
+            </li>
+            <li>
+                <a href="#inline-code">Inline Code</a>
+            </li>
+            <li>
+                <a href="#tables">Tables</a>
+            </li>
+            <li>
+                <a href="#images">Images</a>
+            </li>
+        </ol>
+        <div style="height: 40px;"></div>
+
+        <h2 id="introduction">Introduction</h2>
+        <p>This Markdown Formatting Guide is designed to help you create visually
+            organized mind maps. By using the provided syntax, you can easily format your
+            text to produce branches, blocks, lists, and other essential elements for your
+            mind map. Let's dive in!</p>
+        <br>
+        <h3 id="basic-structure">1. Basic structure</h3>
+        <p>Using lists, you can to create branches in your mind map. Each list item will
+            appear as a separate branch.</p>
+        <pre style="position: relative;"> 
+                <code>   
+                    <svg fill="none" height="30" viewbox="0 0 208 128" width="30" xmlns="http://www.w3.org/2000/svg" 
+                        style="position: absolute; top: 5px; right: 10px; width: 30px; height: 30px; display: flex; opacity: 0.6;">
+                        <g fill="#ffffff"><path clip-rule="evenodd" d="m15 10c-2.7614 0-5 2.2386-5 5v98c0 2.761 2.2386 5 5 5h178c2.761 0 5-2.239 5-5v-98c0-2.7614-2.239-5-5-5zm-15 5c0-8.28427 6.71573-15 15-15h178c8.284 0 15 6.71573 15 15v98c0 8.284-6.716 15-15 15h-178c-8.28427 0-15-6.716-15-15z" fill-rule="evenodd"/><path d="m30 98v-68h20l20 25 20-25h20v68h-20v-39l-20 25-20-25v39zm125 0-30-33h20v-35h20v35h20z"/></g>
+                    </svg>                
+    # my mind map
+        ## branch 1
+        ## branch 2
+            ### text
+            ### text
+                    </code></pre>
+        <br>
+        <img
+            src="/img/screenshots/basic-mindmap-structure.webp"
+            alt="Basic mind map"
+            class="screenshot">
+
+        <div style="height: 40px;"></div>
+        <h3 id="text-formatting">2. Text Formatting</h3>
+
+        <p>You can also use special text formatting:</p>
+        <p>
+            <p>
+                <strong>Example Branch</strong>
+            </p>
+            <pre style="position: relative;"> 
+                <code>   
+                    <svg fill="none" height="30" viewbox="0 0 208 128" width="30" xmlns="http://www.w3.org/2000/svg" 
+                        style="position: absolute; top: 5px; right: 10px; width: 30px; height: 30px; display: flex; opacity: 0.6;">
+                        <g fill="#ffffff"><path clip-rule="evenodd" d="m15 10c-2.7614 0-5 2.2386-5 5v98c0 2.761 2.2386 5 5 5h178c2.761 0 5-2.239 5-5v-98c0-2.7614-2.239-5-5-5zm-15 5c0-8.28427 6.71573-15 15-15h178c8.284 0 15 6.71573 15 15v98c0 8.284-6.716 15-15 15h-178c-8.28427 0-15-6.716-15-15z" fill-rule="evenodd"/><path d="m30 98v-68h20l20 25 20-25h20v68h-20v-39l-20 25-20-25v39zm125 0-30-33h20v-35h20v35h20z"/></g>
+                    </svg>  
+    - **example branch**
+                            </code></pre>
+            <br>
+            <p>
+                <del>Example Branch</del>
+            </p>
+            <pre style="position: relative;"> 
+                <code>   
+                    <svg fill="none" height="30" viewbox="0 0 208 128" width="30" xmlns="http://www.w3.org/2000/svg" 
+                        style="position: absolute; top: 5px; right: 10px; width: 30px; height: 30px; display: flex; opacity: 0.6;">
+                        <g fill="#ffffff"><path clip-rule="evenodd" d="m15 10c-2.7614 0-5 2.2386-5 5v98c0 2.761 2.2386 5 5 5h178c2.761 0 5-2.239 5-5v-98c0-2.7614-2.239-5-5-5zm-15 5c0-8.28427 6.71573-15 15-15h178c8.284 0 15 6.71573 15 15v98c0 8.284-6.716 15-15 15h-178c-8.28427 0-15-6.716-15-15z" fill-rule="evenodd"/><path d="m30 98v-68h20l20 25 20-25h20v68h-20v-39l-20 25-20-25v39zm125 0-30-33h20v-35h20v35h20z"/></g>
+                    </svg>  
+    - ~~example branch~~
+                            </code></pre>
+            <br>
+            <p>
+                <em>Example Branch</em>
+            </p>
+            <pre style="position: relative;"> 
+                <code>   
+                    <svg fill="none" height="30" viewbox="0 0 208 128" width="30" xmlns="http://www.w3.org/2000/svg" 
+                        style="position: absolute; top: 5px; right: 10px; width: 30px; height: 30px; display: flex; opacity: 0.6;">
+                        <g fill="#ffffff"><path clip-rule="evenodd" d="m15 10c-2.7614 0-5 2.2386-5 5v98c0 2.761 2.2386 5 5 5h178c2.761 0 5-2.239 5-5v-98c0-2.7614-2.239-5-5-5zm-15 5c0-8.28427 6.71573-15 15-15h178c8.284 0 15 6.71573 15 15v98c0 8.284-6.716 15-15 15h-178c-8.28427 0-15-6.716-15-15z" fill-rule="evenodd"/><path d="m30 98v-68h20l20 25 20-25h20v68h-20v-39l-20 25-20-25v39zm125 0-30-33h20v-35h20v35h20z"/></g>
+                    </svg>  
+
+    - *example branch*
+                            </code></pre>
+            <br>
+            <p class="inlinecode">
+                <code>Example Branch</code>
+            </p>
+            <pre style="position: relative;"> 
+                <code>   
+                    <svg fill="none" height="30" viewbox="0 0 208 128" width="30" xmlns="http://www.w3.org/2000/svg" 
+                        style="position: absolute; top: 5px; right: 10px; width: 30px; height: 30px; display: flex; opacity: 0.6;">
+                        <g fill="#ffffff"><path clip-rule="evenodd" d="m15 10c-2.7614 0-5 2.2386-5 5v98c0 2.761 2.2386 5 5 5h178c2.761 0 5-2.239 5-5v-98c0-2.7614-2.239-5-5-5zm-15 5c0-8.28427 6.71573-15 15-15h178c8.284 0 15 6.71573 15 15v98c0 8.284-6.716 15-15 15h-178c-8.28427 0-15-6.716-15-15z" fill-rule="evenodd"/><path d="m30 98v-68h20l20 25 20-25h20v68h-20v-39l-20 25-20-25v39zm125 0-30-33h20v-35h20v35h20z"/></g>
+                    </svg>  
+
+    - `example branch`
+                            </code></pre>
+        </p>
+        <div style="height: 50px;"></div>
+        <h3 id="ordered-lists">3. Ordered Lists</h3>
+        <img
+            src="/img/screenshots/ordered-branches.webp"
+            alt="Mind Map with two ordered branches"
+            class="screenshot">
+        <p>To add this to your mind map, use the following text:</p>
+        <pre style="position: relative;"> 
+            <code>   
+                <svg fill="none" height="23" viewbox="0 0 208 128" width="23" xmlns="http://www.w3.org/2000/svg" 
+                    style="position: absolute; top: 5px; right: 10px; width: 30px; height: 30px; display: flex; opacity: 0.6;">
+                    <g fill="#ffffff"><path clip-rule="evenodd" d="m15 10c-2.7614 0-5 2.2386-5 5v98c0 2.761 2.2386 5 5 5h178c2.761 0 5-2.239 5-5v-98c0-2.7614-2.239-5-5-5zm-15 5c0-8.28427 6.71573-15 15-15h178c8.284 0 15 6.71573 15 15v98c0 8.284-6.716 15-15 15h-178c-8.28427 0-15-6.716-15-15z" fill-rule="evenodd"/><path d="m30 98v-68h20l20 25 20-25h20v68h-20v-39l-20 25-20-25v39zm125 0-30-33h20v-35h20v35h20z"/></g>
+                </svg>  
+    # ordered list
+    1. branch
+    2. branch              
+            </code></pre>
+        <p>Each list item will create a branch on your mind map.</p>
+        <div style="height: 40px;"></div>
+
+        <h3 id="links">4. Links</h3>
+        <p>To add a link to your mind map, simply use the markdown syntax for links:</p>
+        <pre style="position: relative;"> 
+            <code>   
+                <svg fill="none" height="23" viewbox="0 0 208 128" width="23" xmlns="http://www.w3.org/2000/svg" 
+                    style="position: absolute; top: 5px; right: 10px; width: 30px; height: 30px; display: flex; opacity: 0.6;">
+                    <g fill="#ffffff"><path clip-rule="evenodd" d="m15 10c-2.7614 0-5 2.2386-5 5v98c0 2.761 2.2386 5 5 5h178c2.761 0 5-2.239 5-5v-98c0-2.7614-2.239-5-5-5zm-15 5c0-8.28427 6.71573-15 15-15h178c8.284 0 15 6.71573 15 15v98c0 8.284-6.716 15-15 15h-178c-8.28427 0-15-6.716-15-15z" fill-rule="evenodd"/><path d="m30 98v-68h20l20 25 20-25h20v68h-20v-39l-20 25-20-25v39zm125 0-30-33h20v-35h20v35h20z"/></g>
+                </svg>
+  [my website](https://example.com)
+            </code></pre>
+        <p>This will render a clickable link on your mind map: 
+            <br>
+            <a href="https://example.com" style="color: blue;">my website</a>
+        </p>
+
+        <div style="height: 40px;"></div>
+
+        <h3 id="inline-code">5. Inline Code</h3>
+        <p>To create a code block, simply wrap your code in triple backticks (```),
+            followed by the language (optional):</p>
+        <pre style="position: relative;"> 
+                <code>   
+                    <svg fill="none" height="30" viewbox="0 0 208 128" width="30" xmlns="http://www.w3.org/2000/svg" 
+                        style="position: absolute; top: 5px; right: 10px; width: 30px; height: 30px; display: flex; opacity: 0.6;">
+                        <g fill="#ffffff"><path clip-rule="evenodd" d="m15 10c-2.7614 0-5 2.2386-5 5v98c0 2.761 2.2386 5 5 5h178c2.761 0 5-2.239 5-5v-98c0-2.7614-2.239-5-5-5zm-15 5c0-8.28427 6.71573-15 15-15h178c8.284 0 15 6.71573 15 15v98c0 8.284-6.716 15-15 15h-178c-8.28427 0-15-6.716-15-15z" fill-rule="evenodd"/><path d="m30 98v-68h20l20 25 20-25h20v68h-20v-39l-20 25-20-25v39zm125 0-30-33h20v-35h20v35h20z"/></g>
+                    </svg>  
+    ### inline code
+    
+        ```js
+        console.log('hello, javascript')
+        ```
+    </code></pre>
+        <p>This will render a code block in your mind map:</p>
+        <img
+            src="/img/screenshots/inline-code.webp"
+            alt="Mind Map with inline code"
+            class="screenshot">
+
+        <div style="height: 40px;"></div>
+
+        <h3 id="tables">6. Tables</h3>
+        <p>To add tables, use the standard markdown table format. Here's an example:</p>
+        <pre style="position: relative;"> 
+            <code>   
+                <svg fill="none" height="23" viewbox="0 0 208 128" width="23" xmlns="http://www.w3.org/2000/svg" 
+                    style="position: absolute; top: 5px; right: 10px; width: 30px; height: 30px; display: flex; opacity: 0.6;">
+                    <g fill="#ffffff"><path clip-rule="evenodd" d="m15 10c-2.7614 0-5 2.2386-5 5v98c0 2.761 2.2386 5 5 5h178c2.761 0 5-2.239 5-5v-98c0-2.7614-2.239-5-5-5zm-15 5c0-8.28427 6.71573-15 15-15h178c8.284 0 15 6.71573 15 15v98c0 8.284-6.716 15-15 15h-178c-8.28427 0-15-6.716-15-15z" fill-rule="evenodd"/><path d="m30 98v-68h20l20 25 20-25h20v68h-20v-39l-20 25-20-25v39zm125 0-30-33h20v-35h20v35h20z"/></g>
+                </svg>  
+    ### tables
+
+        | products | price |
+        |-|-|
+        | apple | 4 |
+        | banana | 2 | 
+            </code></pre>
+        <p>This will render a table in your mind map with two columns and multiple rows:</p>
+        <img
+            src="/img/screenshots/table.webp"
+            alt="Mind Map with inline code"
+            class="screenshot">
+
+        <div style="height: 40px;"></div>
+
+        <h3 id="images">7. Images</h3>
+        <p>You can also add images to your mind map by using the following markdown syntax:</p>
+        <pre style="position: relative;"> 
+            <code>   
+                <svg fill="none" height="23" viewbox="0 0 208 128" width="23" xmlns="http://www.w3.org/2000/svg" 
+                    style="position: absolute; top: 5px; right: 10px; width: 30px; height: 30px; display: flex; opacity: 0.6;">
+                    <g fill="#ffffff"><path clip-rule="evenodd" d="m15 10c-2.7614 0-5 2.2386-5 5v98c0 2.761 2.2386 5 5 5h178c2.761 0 5-2.239 5-5v-98c0-2.7614-2.239-5-5-5zm-15 5c0-8.28427 6.71573-15 15-15h178c8.284 0 15 6.71573 15 15v98c0 8.284-6.716 15-15 15h-178c-8.28427 0-15-6.716-15-15z" fill-rule="evenodd"/><path d="m30 98v-68h20l20 25 20-25h20v68h-20v-39l-20 25-20-25v39zm125 0-30-33h20v-35h20v35h20z"/></g>
+                </svg>  
+![](https://mindmapwizard.com/img/p2-gen-mind-map.webp)
+</code></pre>
+        <p>This will display the image directly in your mind map.</p>
+        <div style="height: 40px;"></div>
+        <p>Sounds complicated? Try it out!
+            <img
+                src="/img/icons/arrow-down.svg"
+                class="down-arrow"
+                alt=""
+                height="20"
+                width="20"></p>
+        <!-- From Uiverse.io by vinodjangid07 -->
+        <a href="/edit.html" class="button">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="28px"
+                viewbox="0 -960 960 960"
+                width="28px"
+                fill="#ffffff"
+                class="svgIcon"><path
+                d="m620-284 56-56q6-6 6-14t-6-14L540-505q4-11 6-22t2-25q0-57-40.5-97.5T410-690q-11 0-21 1t-20 5q-9 4-11 14t5 17l74 74-56 56-74-74q-7-7-17-5t-14 11q-3 10-4.5 20t-1.5 21q0 57 40.5 97.5T408-412q13 0 24.5-2t22.5-6l137 136q6 6 14 6t14-6ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+            Open Editor
+        </a>
+    </div>
+
+    <div class="whitespace" style="height: 10px;"></div>
+
+    <div class="pink-section">
+        <h2 class="section-title">Try it out!</h2>
+        <p class="white-p">Now you know everything about our service. Give it a try!</p>
+        <!-- From Uiverse.io by SteveBloX -->
+        <a href="new.html" class="get-started-button">Create Mind Map</a>
+    </div>
+
+
+
+    <script>
+        function goBack() {
+            window
+            
+                .back();
+        }
+    </script>
+    <!-- 100% privacy-first analytics -->
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mind Map Wizard</title>
+        <meta
+            name="description"
+            content="">
+        <meta
+            name="keywords"
+            content="]">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="language" content="en">
+        <meta name="referrer" content="no-referrer-when-downgrade">
+
+        <meta property="og:title" content="Mind Map Wizard | Text to Mind Map AI">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="Mind Map Wizard">
+
+        <link href="/OpenSans-ExtraBold.ttf" rel="stylesheet">
+        <link rel="stylesheet" href="./static/new.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.16.1"></script>
+        <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.16.0"></script>
+        <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.16"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8940556207214695"
+     crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    </head>
+    <body>
+
+        <button
+            id="leftSidebarToggle"
+            class="left-sidebar-toggle navbar-toggle"
+            aria-label="Toggle Left Sidebar">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewbox="0 0 24 24"
+                fill="none"
+                stroke="var(--text-color)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-panel-left-icon lucide-panel-left">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M9 3v18"/>
+            </svg>
+
+        </button>
+        <a href="mmap" class="new-mind-map-link">
+            <svg
+                height="18"
+                width="18"
+                viewbox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                    d="M12 2C11.4477 2 11 2.44772 11 3V11H3C2.44772 11 2 11.4477 2 12C2 12.5523 2.44772 13 3 13H11V21C11 21.5523 11.4477 22 12 22C12.5523 22 13 21.5523 13 21V13H21C21.5523 13 22 12.5523 22 12C22 11.4477 21.5523 11 21 11H13V3C13 2.44772 12.5523 2 12 2Z"
+                    fill="#1e293b"
+                    stroke="#1e293b"
+                    stroke-width="0.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+        </a>
+
+        <div class="navbar">
+
+            <div class="nav-links">
+                <button class="new-mind-map-button" onclick="window.location.href='mmap'">
+                    <div class="icon">
+                        <svg
+                            height="18"
+                            width="18"
+                            viewbox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path
+                                d="M12 2C11.4477 2 11 2.44772 11 3V11H3C2.44772 11 2 11.4477 2 12C2 12.5523 2.44772 13 3 13H11V21C11 21.5523 11.4477 22 12 22C12.5523 22 13 21.5523 13 21V13H21C21.5523 13 22 12.5523 22 12C22 11.4477 21.5523 11 21 11H13V3C13 2.44772 12.5523 2 12 2Z"
+                                fill="#1e293b"
+                                stroke="#1e293b"
+                                stroke-width="0.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                    New Mind Map
+
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+</p>
+<div id="app">
+
+    <div class="loading-animation" id="loading-animation">
+        <div class="analyze">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewbox="0 0 24 24"
+                height="54"
+                width="54">
+                <rect height="45" width="45"></rect>
+                <path
+                    stroke-linecap="round"
+                    stroke-width="1.5"
+                    stroke="var(--primary-color)"
+                    d="M19.25 9.25V5.25C19.25 4.42157 18.5784 3.75 17.75 3.75H6.25C5.42157 3.75 4.75 4.42157 4.75 5.25V18.75C4.75 19.5784 5.42157 20.25 6.25 20.25H12.25"
+                    class="board"></path>
+                <path
+                    d="M9.18748 11.5066C9.12305 11.3324 8.87677 11.3324 8.81234 11.5066L8.49165 12.3732C8.47139 12.428 8.42823 12.4711 8.37348 12.4914L7.50681 12.8121C7.33269 12.8765 7.33269 13.1228 7.50681 13.1872L8.37348 13.5079C8.42823 13.5282 8.47139 13.5714 8.49165 13.6261L8.81234 14.4928C8.87677 14.6669 9.12305 14.6669 9.18748 14.4928L9.50818 13.6261C9.52844 13.5714 9.5716 13.5282 9.62634 13.5079L10.493 13.1872C10.6671 13.1228 10.6671 12.8765 10.493 12.8121L9.62634 12.4914C9.5716 12.4711 9.52844 12.428 9.50818 12.3732L9.18748 11.5066Z"
+                    class="star-2"></path>
+                <path
+                    d="M11.7345 6.63394C11.654 6.41629 11.3461 6.41629 11.2656 6.63394L10.8647 7.71728C10.8394 7.78571 10.7855 7.83966 10.717 7.86498L9.6337 8.26585C9.41605 8.34639 9.41605 8.65424 9.6337 8.73478L10.717 9.13565C10.7855 9.16097 10.8394 9.21493 10.8647 9.28335L11.2656 10.3667C11.3461 10.5843 11.654 10.5843 11.7345 10.3667L12.1354 9.28335C12.1607 9.21493 12.2147 9.16097 12.2831 9.13565L13.3664 8.73478C13.5841 8.65424 13.5841 8.34639 13.3664 8.26585L12.2831 7.86498C12.2147 7.83966 12.1607 7.78571 12.1354 7.71728L11.7345 6.63394Z"
+                    class="star-1"></path>
+                <path
+                    class="stick"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    stroke="var(--secondary-color)"
+                    d="M17 14L21.2929 18.2929C21.6834 18.6834 21.6834 19.3166 21.2929 19.7071L20.7071 20.2929C20.3166 20.6834 19.6834 20.6834 19.2929 20.2929L15 16M17 14L15.7071 12.7071C15.3166 12.3166 14.6834 12.3166 14.2929 12.7071L13.7071 13.2929C13.3166 13.6834 13.3166 14.3166 13.7071 14.7071L15 16M17 14L15 16"></path>
+            </svg>
+        </div>
+        <br>
+        <small>Generating Mind Map...</small>
+    </div>
+
+    <div class="centered-div">
+        <p id="hehehe">{{ query }}</p>
+        <div class="header" id="header">
+            <div class="whitespace" style="height: 100px;"></div>
+            <h1 id="randomText"></h1>
+            <div class="input-wrapper">
+                <input
+                    type="text"
+                    name="text"
+                    class="input"
+                    id="prompt"
+                    placeholder="Visualize anything..."/>
+                <button id="generate-mindmap-btn" class="send-prompt-btn">
+                    <img
+                        src="/img/icons/send-icon.png"
+                        alt="Generate"
+                        height="26px"
+                        width="26px"
+                        class="send-icon">
+                </button>
+            </div>
+
+            <div
+                style="display: flex; justify-content: center; gap: 10px; margin-top: 18px;">
+                
+
+            </div>
+
+
+            
+            <div class="outage-notification" style="display: none;">
+                <p style="margin-top: 20px;">The generation of new mind maps with AI is currently not available. However, you can...</p>
+
+            </div>
+
+
+
+        <!-- This "recent-mindmaps-container" is no longer visible because it was
+        replaced by the mind maps list in the sidebar. Therefore, there aren't any new
+        changes here. Only in the sidebars mind map history list! -->
+        <div id="recent-mindmaps-container">
+            <div class="recent-mindmaps" id="recent-mindmaps">
+                <h2></h2>
+                <small></small>
+                <div class="recent-list" id="recent-list"></div>
+                <div style="text-align: right; margin-bottom: 10px;">
+                    <a href="history.html" class="view-history-link">
+                        View history
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="6"
+                            height="11"
+                            viewbox="0 0 6 11"
+                            style="margin-left: 3px;">
+                            <polyline
+                                points=".675 .925 5.323 5.5 .675 10.075"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="mindmap"></div>
+<small class="ai-content-disclaimer" id="ai-content-disclaimer">AI Content may display inaccurate or offensive information</small>
+
+<div
+    id="download-options-popup"
+    class="download-options-popup"
+    style="padding: 0px;">
+    <div class="download-options-popup-content">
+        <div class="popup-header">
+            <h2>Download Mind Map</h2>
+            <button class="close-button" id="close-download-options-popup">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+        </div>
+        <div class="download-options">
+            <div class="format-selector">
+                <label for="download-format">File format</label>
+                <select id="download-format" class="material-dropdown">
+                    <option value="jpg">JPG - Image</option>
+                    <option value="svg">SVG - Vector Graphics</option>
+                    <option value="pdf">PDF - Document</option>
+                    <option value="markdown">Markdown - Text</option>
+                </select>
+            </div>
+            <button class="download-button primary" id="download-btn">
+                Download
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="button-container" id="button-container">
+    <button
+        class="share-button"
+        id="share-btn"
+        onclick="shareMindmap()"
+        title="Share (S)">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewbox="0 0 24 24"
+            fill="none"
+            stroke="#1e293b"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-share"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
+    </button>
+    <button class="edit-mode-button" id="edit-mode-button" title="Edit (E)">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewbox="0 0 24 24"
+            fill="none"
+            stroke="#1e293b"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-pen-line"><path d="M12 20h9"/><path
+            d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg>
+    </button>
+    <button
+        class="download-mindmap-btn"
+        id="download-mindmap-btn"
+        title="Download (D)">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewbox="0 0 24 24"
+            fill="none"
+            stroke="#1e293b"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+    </button>
+    <button class="regenerate-button" id="regenerate-button" title="Regenerate (R)">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewbox="0 0 24 24"
+            fill="none"
+            stroke="#1e293b"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-rotate-ccw"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+    </button>
+    <button class="fit-button" id="mm-fit" title="Fit to Screen (F)">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewbox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-minimize"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>
+    </button>
+</div>
+
+<div class="editor-overlay" id="editor-overlay"></div>
+<div class="markdown-editor" id="markdown-editor">
+    <textarea id="markdown-textarea" spellcheck="false"></textarea>
+    <div class="editor-buttons">
+        <a
+            href="help/mind-map-editing.html"
+            class="help-button"
+            target="_blank"
+            style="position: fixed; left: 24px; width: 30px; height: 30px;; color: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: bold;">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewbox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-circle-help"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+        </a>
+        <svg
+            fill="none"
+            height="30"
+            viewbox="0 0 208 128"
+            width="30"
+            xmlns="http://www.w3.org/2000/svg"
+            style="position: fixed; left: 60px; width: 30px; height: 30px; color: #1e293b; display: flex; opacity: 0.6;">
+            <g fill="#1e293b"><path
+                clip-rule="evenodd"
+                d="m15 10c-2.7614 0-5 2.2386-5 5v98c0 2.761 2.2386 5 5 5h178c2.761 0 5-2.239 5-5v-98c0-2.7614-2.239-5-5-5zm-15 5c0-8.28427 6.71573-15 15-15h178c8.284 0 15 6.71573 15 15v98c0 8.284-6.716 15-15 15h-178c-8.28427 0-15-6.716-15-15z"
+                fill-rule="evenodd"/><path
+                d="m30 98v-68h20l20 25 20-25h20v68h-20v-39l-20 25-20-25v39zm125 0-30-33h20v-35h20v35h20z"/></g>
+        </svg>
+
+        <button class="editor-button cancel-button" id="cancel-edit">Cancel</button>
+        <button class="editor-button save-button" id="save-edit">Save</button>
+    </div>
+</div>
+
+<div class="info-button">
+    <img src="/img/icons/info-icon.svg" alt="Info" width="22" height="22">
+</div>
+
+
+<!-- Left Sidebar -->
+<div id="leftSidebar" class="left-sidebar">
+    <div class="left-sidebar-header"></div>
+    <div class="left-sidebar-content">
+        <div id="leftSidebarMindmapList" class="sidebar-mindmap-list">
+            <!-- Mind map items will be loaded here -->
+        </div>
+        <div class="sidebar-boxlet">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8940556207214695"
+                crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-8940556207214695"
+                data-ad-slot="3799641607"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        </div>
+    </div>
+</div>
+
+
+<script src="./static/new.js" defer="defer"></script>
+
+<!-- 100% privacy-first analytics -->
+<script async="async" src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+</body>
+</html>

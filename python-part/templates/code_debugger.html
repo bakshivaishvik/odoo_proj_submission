@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>debug codes</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="./static/index.css" />
+</head>
+<body>
+  <!-- Main Container -->
+  <div class="container">
+    
+    <!-- Centered Content -->
+    <div class="centered-div">
+      
+      <!-- Header Section -->
+      <div class="header">
+        <h1>debug codes</h1>
+        <p class="topic-input-cta">Paste your code for debugging.</p>
+      </div>
+      
+      <!-- Input Section -->
+      <div class="input-wrapper" style="max-width: 700px; width: 100%;">
+        
+        <!-- Text Input -->
+        <label for="textInput" class="topic-input-cta">Enter code to debug:</label>
+        <textarea id="textInput" class="input" rows="10" placeholder="Paste your code here..."></textarea>
+        
+        <!-- File Upload -->
+        <label for="fileInput" class="topic-input-cta" style="margin-top: 2rem; display: block;">Or upload a file (PDF or DOCX):</label>
+        <div class="file-input-wrapper" style="margin-bottom: 1.5rem;">
+          <input type="file" id="fileInput" accept=".pdf,.docx" style="display: none;">
+          <label for="fileInput" class="navbutton" style="display: inline-block; text-align: center; width: 100%;">
+            <span>Click to upload or drag and drop</span>
+          </label>
+          <div id="fileName" class="topic-input-cta" style="margin-top: 0.5rem;"></div>
+        </div>
+
+        <!-- Submit Button -->
+        <button id="summarizeBtn" class="navbutton" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.75rem;" onclick="submitSummary()">
+          <span id="buttonText">debug</span>
+          <div id="loadingSpinner" class="loading-spinner" style="display: none;"></div>
+        </button>
+      </div>
+
+      <!-- Output Section -->
+      <div class="output-section" style="margin-top: 3rem; max-width: 1200px; width: 100%;">
+        <h2 class="section-title">Summary:</h2>
+        <div id="output" class="input" style="min-height: 200px;"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="./static/debugger.js"></script>
+</body>
+</html>
